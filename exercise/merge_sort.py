@@ -11,6 +11,17 @@ def merge_sort(arr):
         L = arr[:mid] # [1,2,3,4] => [1,2]
         R = arr[mid:] # [1,2,3,4] => [3,4]
         L = merge_sort(L) # [3,1] => [1,3]
+
+        # [4,1,3,2]
+        # L: 4,1 R: 3,2 (merge_sort: 1回目)
+        # merge_sort(L(4,1)), merge_sort(R(3,2)) (merge_sort: 1回目)
+        # L: 4 R: 1, L: 3 R: 2 (merge_sort: 2回目)
+        # merge_sort(L(4)), merge_sort(R(1)) merge_sort(L(3)), merge_sort(R(2))
+        # 4,1 3,2 (merge_sort: 3回目)
+        # 4,1 => 1,4 3,2 => 2,3 (merge_sort: 2回目)
+        # L(1,4) R(3,2) => 1,2,3,4 (merge_sort: 1回目)
+        # 4,1,3,2 => 1,2,3,4
+
         R = merge_sort(R) # [2] => 2
         i = j = 0 # iはLを探索するインデックス、jはRを探索するインデックス
 
